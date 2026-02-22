@@ -128,8 +128,89 @@ void explainVector() {
     cout << "Is v empty? " << v.empty() << endl;
 }
 
+void explainList() {
+    list<int> ls;
+
+    ls.push_back(2);      // {2}
+    ls.emplace_back(4);   // {2, 4}
+
+    ls.push_front(5);     // {5, 2, 4}
+    ls.emplace_front(10); // {10, 5, 2, 4}
+
+    // Iterating
+    for (auto it = ls.begin(); it != ls.end(); it++) {
+        cout << *it << " ";
+    }
+
+    cout << endl;
+
+    // Other functions
+    cout << "Size: " << ls.size() << endl;
+
+    ls.pop_back();   // removes 4
+    ls.pop_front();  // removes 10
+
+    ls.clear();      // removes all elements
+
+    cout << "Is empty? " << ls.empty() << endl;
+}
+
+void explainDeque() {
+
+    deque<int> dq;
+
+    dq.push_back(1);      // (1)
+    dq.emplace_back(2);   // (1, 2)
+
+    dq.push_front(4);     // (4, 1, 2)
+    dq.emplace_front(3);  // (3, 4, 1, 2)
+
+    dq.pop_back();        // (3, 4, 1)
+    dq.pop_front();       // (4, 1)
+
+    cout << "Front: " << dq.front() << endl;
+    cout << "Back: " << dq.back() << endl;
+
+    // Iterate
+    for (auto it = dq.begin(); it != dq.end(); it++) {
+        cout << *it << " ";
+    }
+
+    cout << endl;
+}
+
+
+void explainStack() {
+
+    stack<int> st;
+
+    st.push(1);  // {1}
+    st.push(2);  // {2, 1}
+    st.push(3);  // {3, 2, 1}
+    st.push(3);  // {3, 3, 2, 1}
+
+    st.emplace(5); // {5, 3, 3, 2, 1}
+
+    cout << st.top() << endl;   // 5
+
+    st.pop();  // removes 5 -> {3, 3, 2, 1}
+
+    cout << st.top() << endl;   // 3
+
+    cout << st.size() << endl;  // 4
+
+    cout << st.empty() << endl; // 0 (false)
+
+    stack<int> st1, st2;
+    st1.swap(st2);
+}
+
+
 int main(){
 //    explainPair();
-   explainVector();
+//    explainVector();
+//    explainList();
+//    explainDeque();
+//    explainStack();
 }
 
