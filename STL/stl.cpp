@@ -205,6 +205,146 @@ void explainStack() {
     st1.swap(st2);
 }
 
+void explainQueue() {
+
+    queue<int> q;
+
+    q.push(1);     // {1}
+    q.push(2);     // {1, 2}
+    q.emplace(4);  // {1, 2, 4}
+
+    q.back() += 5; // modify last element -> {1, 2, 9}
+
+    cout << q.back() << endl;   // 9
+
+    cout << q.front() << endl;  // 1
+
+    q.pop();  // removes 1 -> {2, 9}
+
+    cout << q.front() << endl;  // 2
+
+    cout << q.size() << endl;   // 2
+    cout << q.empty() << endl;  // 0 (false)
+}
+
+
+void explainPQ() {
+
+    // -------------------------
+    // Max Heap (Default)
+    // -------------------------
+    priority_queue<int> pq;
+
+    pq.push(5);    // {5}
+    pq.push(2);    // {5, 2}
+    pq.push(8);    // {8, 5, 2}
+    pq.emplace(10); // {10, 8, 5, 2}
+
+    cout << pq.top() << endl;  // 10
+
+    pq.pop();  // removes 10 -> {8, 5, 2}
+
+    cout << pq.top() << endl;  // 8
+
+    cout << pq.size() << endl;
+    cout << pq.empty() << endl;
+
+    // -------------------------
+    // Min Heap
+    // -------------------------
+    priority_queue<int, vector<int>, greater<int>> pq2;
+
+    pq2.push(5);    // {5}
+    pq2.push(2);    // {2, 5}
+    pq2.push(8);    // {2, 5, 8}
+    pq2.emplace(10); // {2, 5, 8, 10}
+
+    cout << pq2.top() << endl;  // 2
+}
+
+
+void explainSet() {
+
+    set<int> st;
+
+    st.insert(1);   // {1}
+    st.emplace(2);  // {1, 2}
+    st.insert(2);   // duplicate ignored -> {1, 2}
+    st.insert(4);   // {1, 2, 4}
+    st.insert(3);   // {1, 2, 3, 4}
+
+    // begin(), end(), rbegin(), rend()
+    for (auto it = st.begin(); it != st.end(); it++) {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    // find()
+    auto it = st.find(3);   // points to 3
+    auto it2 = st.find(6);  // returns st.end() (not found)
+
+    // erase by value
+    st.erase(4);  // removes 4 (log n time)
+
+    // count()
+    int cnt = st.count(1);  // returns 1 if present, else 0
+
+    // erase by iterator
+    auto it3 = st.find(2);
+    st.erase(it3);  // constant time
+
+    // erase range [first, last)
+    auto it1 = st.find(1);
+    auto it4 = st.find(3);
+    st.erase(it1, it4); // removes elements from 1 up to (not including) 3
+
+    // lower_bound & upper_bound
+    auto lb = st.lower_bound(2);
+    auto ub = st.upper_bound(3);
+
+    cout << "Size: " << st.size() << endl;
+    cout << "Empty? " << st.empty() << endl;
+}
+
+
+void explainMultiSet() {
+
+    multiset<int> ms;
+
+    ms.insert(1);   // {1}
+    ms.insert(1);   // {1, 1}
+    ms.insert(1);   // {1, 1, 1}
+
+    // count occurrences
+    int cnt = ms.count(1);   // 3
+
+    // erase all 1's
+    ms.erase(1);   // removes ALL 1's
+
+    // Insert again
+    ms.insert(1);
+    ms.insert(1);
+    ms.insert(1);
+
+    // erase only ONE occurrence
+    ms.erase(ms.find(1));  // removes one 1
+
+    // erase range (careful!)
+    auto it1 = ms.find(1);
+    auto it2 = next(it1, 2);  // move iterator forward by 2
+    ms.erase(it1, it2);       // erase 2 elements
+
+}
+
+void explainUSet() { 
+ unordered_set<int> st;
+ // lower_bound and upper_bound function 
+ // does not works, fest all functions are same 
+ // as above, it does not stores in any // particular order it has a better complexity 
+ // than set in most cases, except some when collision happens
+}
+
+
 
 int main(){
 //    explainPair();
@@ -212,5 +352,10 @@ int main(){
 //    explainList();
 //    explainDeque();
 //    explainStack();
+//    explainQueue()
+//    explainPQ();
+//    explainSet();
+//    explainMultiSet();
+//    explainSet();
 }
 
