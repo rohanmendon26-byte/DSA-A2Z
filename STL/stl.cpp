@@ -345,6 +345,168 @@ void explainUSet() {
 }
 
 
+void explainMap() {
+
+    // 1️⃣ Normal map<int, int>
+    map<int, int> mpp;
+
+    mpp[1] = 2;              // {1 -> 2}
+    mpp.emplace(3, 1);       // {1->2, 3->1}
+    mpp.insert({2, 4});      // {1->2, 2->4, 3->1}
+
+    // Iterate (sorted by key)
+    for (auto it : mpp) {
+        cout << it.first << " -> " << it.second << endl;
+    }
+
+    cout << "Value at key 1: " << mpp[1] << endl;
+
+    // ⚠ If key doesn't exist, it creates it with value 0
+    cout << "Value at key 5: " << mpp[5] << endl;
+
+    cout << "After accessing key 5, size: " << mpp.size() << endl;
+}
+
+void explainMap1() {
+
+    // Map stores key-value pairs
+    // Keys are unique and stored in sorted order (ascending by default)
+    map<int, int> mpp;
+
+    // Different types of map declarations:
+
+    // Key = int, Value = pair<int, int>
+    map<int, pair<int, int>> mpp1;
+
+    // Key = pair<int, int>, Value = int
+    map<pair<int, int>, int> mpp2;
+
+    // Inserting elements
+
+    mpp[1] = 2;                 // key = 1, value = 2
+
+    mpp.emplace(3, 1);          // inserts key = 3, value = 1
+
+    mpp.insert({2, 4});         // inserts key = 2, value = 4
+
+    mpp2[{2,3}] = 10;           // key = {2,3}, value = 10
+
+    // Iterating through map
+    // Elements will be printed in sorted order of keys
+    for(auto it : mpp) {
+        cout << it.first << " " << it.second << endl;
+    }
+
+    // Accessing elements
+
+    cout << mpp[1] << endl;     // prints value of key 1 (which is 2)
+
+    cout << mpp[5] << endl;     
+    // If key 5 does not exist, it creates key 5 with value 0 (default for int)
+
+    // Finding an element
+    auto it = mpp.find(3);
+
+    if(it != mpp.end()) {
+        cout << it->second << endl;   // prints value of key 3
+    }
+
+    // Finding non-existing key
+    auto it2 = mpp.find(5);
+
+    if(it2 == mpp.end()) {
+        cout << "Key 5 not found" << endl;
+    }
+}
+
+void explainMultimap(){
+    //everything same as map, only ut can store multiple keys 
+    //only mpp[key]cannot be used here
+}
+
+
+void explainUnorderedMap(){
+    //same as set and unordered_set difference.
+}
+
+bool comp(pair<int,int> p1, pair<int,int> p2) {
+    // First priority: sort according to second element (ascending)
+    if (p1.second < p2.second) {
+        return true;
+    }
+    // If second elements are equal
+    else if (p1.second == p2.second) {
+        // Second priority: sort according to first element (descending)
+        if (p1.first > p2.first) {
+            return true;
+        }
+    }
+   return false;
+}
+
+bool comp(pair<int,int> p1, pair<int,int> p2) {
+
+    // Sort by second element (ascending)
+    if(p1.second < p2.second) return true;
+
+    // If second is same, sort by first (descending)
+    if(p1.second == p2.second && p1.first > p2.first) return true;
+
+    return false;
+}
+
+void explainExtra() {
+
+    // -------- Sorting --------
+
+    int a[] = {5, 2, 4, 1, 3};
+    int n = 5;
+
+    sort(a, a + n);               // Sort full array in ascending order
+
+    vector<int> v = {5, 2, 4, 1, 3};
+    sort(v.begin(), v.end());     // Sort vector in ascending order
+
+    sort(a + 2, a + 4);           // Sort only index 2 to 3 (end index excluded)
+
+    sort(a, a + n, greater<int>()); 
+    // Sort in descending order
+
+
+    // -------- Sorting array of pairs --------
+
+    pair<int, int> p[] = {{1,2}, {2,1}, {4,1}};
+    int m = 3;
+
+    // Sort according to second element
+    // If second is same → sort by first descending
+    sort(p, p + m, comp);
+
+    // After sorting:
+    // (4,1), (2,1), (1,2)
+
+
+    // -------- Built-in Functions --------
+
+    int num = 7;  
+    // 7 in binary = 111 → 3 set bits
+    int cnt = __builtin_popcount(num);
+    cout << cnt << endl;  // Output: 3
+
+    long long num2 = 165786578687LL;
+    int cnt2 = __builtin_popcountll(num2);
+    cout << cnt2 << endl;
+
+
+    // -------- All Permutations --------
+
+    string s = "123";
+
+    // Prints all permutations in lexicographical order
+    do {
+        cout << s << endl;
+    } while(next_permutation(s.begin(), s.end()));
+}
 
 int main(){
 //    explainPair();
@@ -357,5 +519,7 @@ int main(){
 //    explainSet();
 //    explainMultiSet();
 //    explainSet();
+//    explainMap();
+//    explainExtra
 }
 
