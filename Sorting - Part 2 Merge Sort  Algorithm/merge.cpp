@@ -2,6 +2,7 @@
 using namespace std;
 
 //Time-Complexity--> O(n*logn)
+//Space-Complexity--> O(n)
 
 void merge(vector<int> &arr, int low, int mid, int high)
 {
