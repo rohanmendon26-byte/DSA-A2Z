@@ -39,3 +39,30 @@ vector<int> rotateArray(vector<int>arr, int k) {
 
     return arr;
 }
+
+
+//rotate the array by k places to left(optimal method)
+class Solution {
+public:
+
+    void reverse(int start,int end,vector<int>& nums){
+        while(start<end){
+            int temp=nums[start];
+            nums[start]=nums[end];
+            nums[end]=temp;
+            start++;
+            end--;
+        }
+    }
+    void rotate(vector<int>& nums, int k) {
+        k=k%nums.size();
+        if(k<0){
+            k=k+nums.size();
+        }
+
+        reverse(0,k-1,nums);
+        reverse(k,nums.size()-1,nums);
+        reverse(0,nums.size()-1,nums);
+
+    }
+};
