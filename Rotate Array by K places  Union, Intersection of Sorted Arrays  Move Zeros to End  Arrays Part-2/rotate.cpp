@@ -112,3 +112,131 @@ public:
         }
     }
 };
+
+
+//Intersection of two sorted arrays (Without duplicates)
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+        int n1=nums1.size();
+        int n2=nums2.size();
+
+        int i=0; 
+        int j=0;
+
+        vector<int> unionArr;
+
+        while(i<n1 && j<n2){
+            if(nums1[i]==nums2[j]){
+                if(unionArr.size()==0 || unionArr.back()!=nums1[i]){
+                unionArr.push_back(nums1[i]);
+                }
+                i++;
+                j++;
+            }
+
+            else if(nums1[i]<nums2[j]){
+                i++;
+            }
+
+            else{
+                j++;
+            }
+        }
+
+        return unionArr;
+    }
+};
+
+// Input: arr1[] = [1, 2, 3, 4], arr2[] = [2, 4, 6, 7, 8]
+// Output: [2, 4]
+
+
+//Intersection of two sorted arrays (With duplicates)
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+        int n1=nums1.size();
+        int n2=nums2.size();
+        int i=0;
+        int j=0;
+
+        vector<int> temp;
+
+        while(i<n1 && j<n2){
+            if(nums1[i]==nums2[j]){
+                temp.push_back(nums1[i]);
+                i++;
+                j++;
+            }
+
+            else if(nums1[i] < nums2[j]){
+                i++;
+            }
+
+            else{
+                j++;
+            }
+        }
+
+        return temp;
+    }
+};
+
+
+
+// union of two sorted arrays
+class Solution {
+  public:
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        // code here
+        int n1=a.size();
+        int n2=b.size();
+        
+        int i=0;
+        int j=0;
+        
+        vector<int> temp;
+        
+        while(i<n1 && j<n2){
+            if(a[i] <= b[j]){
+                if(temp.size()==0 || temp.back()!=a[i]){
+                    temp.push_back(a[i]);
+                }
+                i++;
+            }
+            
+            else{
+                if(temp.size()==0 || temp.back()!=b[j]){
+                    temp.push_back(b[j]);
+                }
+                j++;
+            }
+            
+          
+        }
+            while(i<n1){
+                if(temp.size()==0 || temp.back()!=a[i]){
+                    temp.push_back(a[i]);
+                }
+                i++;
+            }
+            
+            while(j<n2){
+                 if(temp.size()==0 || temp.back()!=b[j]){
+                    temp.push_back(b[j]);
+                }
+                j++;
+            }
+            
+        
+        return temp;
+    }
+};
+
+// Input: a[] = [1, 2, 3, 4, 5], b[] = [1, 2, 3, 6, 7]
+// Output: [1, 2, 3, 4, 5, 6, 7]
