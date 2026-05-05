@@ -16,6 +16,10 @@ int findMajorityElement(int arr[], int n) {
 	return -1;
 }
 
+// arr = [2, 2, 1, 2, 3, 2, 2]
+// n = 7
+// 2
+
 
 
 //optimal approach
@@ -53,3 +57,7 @@ int findMajorityElement(int arr[], int n) {
 	}
 	return -1;
 }
+
+// arr = [2, 2, 1, 2, 3, 2, 2]
+// n = 7
+// 2

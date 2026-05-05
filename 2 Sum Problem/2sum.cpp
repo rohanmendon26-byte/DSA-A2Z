@@ -17,25 +17,30 @@ public:
         return{-1,-1};
     }
 };
-
+// nums = [2, 7, 11, 15]
+// target = 9
+// [0, 1]
 
 
 // Two sum(optimal approach) --returning yes or no
-int left=0,right=n-1;
-sort(book.begin(),book.end());
+int left = 0, right = n - 1;
+sort(book.begin(), book.end());
 
-while(left<right){
-    sum=book[left]+book[right];
-    if(sum==k){
+while (left < right) {
+    int sum = book[left] + book[right];
+
+    if (sum == k) {
         return "yes";
     }
-
-    else if(sum<target){
+    else if (sum < k) {
         left++;
     }
-
-    else{
-        right++;
+    else {
+        right--;   // FIXED
     }
 }
 return "no";
+
+// book = [1, 4, 5, 6, 8]
+// k = 10
+// "yes"

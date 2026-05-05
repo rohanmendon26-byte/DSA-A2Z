@@ -67,6 +67,10 @@ public:
     }
 };
 
+// nums = [1, 2, 3, 4, 5, 6, 7]
+// k = 3
+// [4, 5, 6, 7, 1, 2, 3]
+
 
 //move zeros to the end of the array (BRUTE FORCE)
 
@@ -89,7 +93,8 @@ public:
         }
     }
 };
-
+// nums = [0, 1, 0, 3, 12]
+// [1, 3, 12, 0, 0]
 
 //move zeros to the end of the array (OPTIMAL)
 class Solution {
@@ -112,6 +117,9 @@ public:
         }
     }
 };
+
+//  nums = [0, 1, 0, 3, 12]
+// [1, 3, 12, 0, 0]
 
 
 //Intersection of two sorted arrays (Without duplicates)
@@ -187,6 +195,16 @@ public:
     }
 };
 
+//input
+// nums1 = [1, 2, 2, 3, 4]
+// nums2 = [2, 2, 4, 6]
+
+//after sorting
+// nums1 = [1, 2, 2, 3, 4]
+// nums2 = [2, 2, 4, 6]
+
+//output
+// [2, 4]
 
 
 // union of two sorted arrays

@@ -1,18 +1,24 @@
 //Longest Subarray (Brute force)
-for(i=0;i<n;i++){
-    s=0;
-    for(j=i;j<n;j++){
-        s+=a[j];
+int length = 0;
+for(int i = 0; i < n; i++) {
+    int s = 0;
+    for(int j = i; j < n; j++) {
+        s += a[j];
 
-        if(s==k)
-           length=max(length,j-i+1)
+        if(s == k) {
+            length = max(length, j - i + 1);
+        }
     }
 }
-print(len)  //-->Time complexity (O(n**2))
+
+cout << length; //-->Time complexity (O(n**2))
+
+// a = [1, 2, 3, 1, 1, 1, 1]
+// k = 3
+// 3
 
 
 
-//Longest Subarray (Better approach)
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,6 +45,9 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
     return maxlen;
 }
 
+// a = [1, 2, 3, 1, 1, 1, 1]
+// k = 3
+// 3
 
 
 //Longest Subarray (Optimal approach)
@@ -68,3 +77,7 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
     }
     return maxlen;   
 }
+
+// a = [1, 2, 1, 1, 1, 3]
+// k = 3
+// 3
