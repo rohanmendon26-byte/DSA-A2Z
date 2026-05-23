@@ -65,8 +65,10 @@ vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
 
 //optimal approach
 #include <bits/stdc++.h> 
-vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
+vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix) {
 	// Write your code here.
+	int n=matrix.size();
+	int m=matrix[0].size();
 	int col0=1;
 	for(int i=0;i<n;i++){
 		for(int j=0;j<m;j++){
