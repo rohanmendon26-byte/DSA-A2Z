@@ -51,8 +51,8 @@ pair<int,int> missingAndRepeating(vector<int> &arr, int n)
 	long long N=arr.size();
 	//S - Sn = x - y
 	//S2 - S2N
-	long long SN=(n*(n+1))/2;
-	long long S2N=(n*(n+1)*(2*n+1))/6;
+	long long SN=(N*(N+1))/2;
+	long long S2N=(N*(N+1)*(2*N+1))/6;
 	long long S=0,S2=0;
 	for(int i=0;i<n;i++){
 		S+=arr[i];
