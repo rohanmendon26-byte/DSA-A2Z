@@ -188,4 +188,31 @@ pair<int, int> getFloorAndCeil(vector<int> &a, int n, int x) {
 	return{b,y};
 	
 }
+
+//FLOOR---->
+// Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 5
+// Output: 1
+// Explanation: Largest number less than or equal to 5 is 2, whose index is 1.
+
+// Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 11
+// Output: 4
+// Explanation: Largest Number less than or equal to 11 is 10, whose indices are 3 and 4. The index of last occurrence is 4.
+
+// Input: arr[] = [1, 2, 8, 10, 10, 12, 19], x = 0
+// Output: -1
+// Explanation: No element less than or equal to 0 is found. So, output is -1.
+
+
+//CEIL---->
+// Input: arr[] = [1, 2, 8, 10, 11, 12, 19], x = 5
+// Output: 2
+// Explanation: Smallest number greater than 5 is 8, whose index is 2.
+
+// Input: arr[] = [1, 2, 8, 10, 11, 12, 19], x = 20
+// Output: -1
+// Explanation: No element greater than 20 is found. So output is -1.
+
+// Input: arr[] = [1, 1, 2, 8, 10, 11, 12, 19], x = 0
+// Output: 0
+// Explanation: Smallest number greater than 0 is 1, whose indices are 0 and 1. The index of the first occurrence is 0.
  
