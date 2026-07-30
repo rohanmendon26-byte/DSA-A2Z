@@ -29,6 +29,27 @@ public:
 };
 
 
+
+// Even Simpler (Striver's Approach)
+// class Solution {
+// public:
+//     int findKRotation(vector<int> &arr) {
+//         int low = 0, high = arr.size() - 1;
+
+//         while (low < high) {
+//             int mid = low + (high - low) / 2;
+
+//             if (arr[mid] > arr[high])
+//                 low = mid + 1;
+//             else
+//                 high = mid;
+//         }
+
+//         return arr[low];
+//     }
+// };
+
+
 // Example 1:
 // Input: nums = [3,4,5,1,2]
 // Output: 1
