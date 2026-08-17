@@ -40,3 +40,28 @@ public:
 // Explanation: 
 // The input string is "()()", with primitive decomposition "()" + "()".
 // After removing outer parentheses of each part, this is "" + "" = "".
+
+
+
+
+//valid parantheis
+
+bool isValidParenthesis(string s)
+{
+    stack<char>st;
+
+    for(char ch:s){
+        if(ch=='(' || ch=='{' || ch=='[')
+           st.push(ch);
+        else{
+            if(st.empty())
+               return false;
+            char top=st.top();
+            if(ch==')' && top!='(' || ch=='}' && top!='{' || ch==']' && top!='[')
+               return false;
+            st.pop();
+        }
+
+    }
+        return st.empty();
+}
