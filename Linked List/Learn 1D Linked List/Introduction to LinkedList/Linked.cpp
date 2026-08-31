@@ -76,6 +76,34 @@ Node *removetail(Node *head){
     return head;
 }
 
+//Delete by K places
+
+Node *removek(Node *head,int k){
+    if(head==NULL)
+      return head;
+    if(k==1){
+        Node*temp=head;
+        head=head->next;
+        delete temp;
+        return head;
+    }
+    Node *temp=head;
+    Node *prev=NULL;
+    int cnt=0;
+
+    while(temp!=NULL){
+        cnt++;
+        if(cnt==k){
+            prev->next=prev->next->next;
+            delete temp;
+            break;
+        }
+        prev=temp;
+        temp=temp->next;
+    }
+    return head;
+}
+
 
 void printList(Node* head) {
     Node* temp = head;
@@ -86,6 +114,77 @@ void printList(Node* head) {
     cout << endl;
 }
 
+Node *insertHead(Node *head,int val){
+    return new Node(val,head);
+}
+
+Node *insertTail(Node *head,int val){
+    if(head==NULL)
+       return new Node(val);
+
+    Node *temp=head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    Node *newNode=new Node(val);
+    temp->next=newNode;
+    return head;
+}
+
+Node *insertPosition(Node *head,int el,int k){
+    if(head==NULL){
+        if(k==1){
+            return new Node(el);
+        }
+        else{
+            return head;
+        }
+    }
+
+    if(k==1)
+       return new Node(el,head);
+    
+    int cnt=0;
+    Node *temp=head;
+
+    while(temp!=NULL){
+        cnt++;
+        if(cnt==k-1){
+            Node *x=new Node(el,temp->next);
+            temp->next=x;
+            break;
+        }
+        temp=temp->next;
+    }
+
+    return head;
+}
+
+
+Node *insertBeforeValue(Node *head,int el,int val){
+    if(head==NULL){
+        return NULL;
+    }
+
+    if(head->data==val)
+       return new Node(el,head);
+    
+    Node *temp=head;
+
+    while(temp->next!=NULL){
+        
+        if(temp->next->data==val){
+            Node *x=new Node(el,temp->next);
+            temp->next=x;
+            break;
+        }
+        temp=temp->next;
+    }
+
+    return head;
+}
+
+
 int main(){
     vector<int>arr={2,5,8,7};
     // Node *y=new Node(arr[1],nullptr);
@@ -93,6 +192,11 @@ int main(){
     // cout<<lengthofall(head);
     // cout<<search(head,2)<<endl;
     // head=removeshead(head);
-    head=removetail(head);
+    // head=removetail(head);
+    // head=removek(head,3);
+    // head=insertHead(head,23);
+    // head=insertTail(head,23);
+    // head=insertPosition(head,45,4);   //O(n)
+    // head=insertBeforeValue(head,100,7);
     printList(head);
 }
