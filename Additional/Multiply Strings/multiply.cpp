@@ -1,0 +1,61 @@
+// Therefore:
+// Time = O(n × m)
+// If both strings have approximately the same length N:
+// Time = O(N²)
+
+// Space = O(n + m)
+// For equal lengths:
+// Space = O(N)
+
+
+
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+        if(num1=="0" ||num2=="0")
+           return "0";
+        int n=num1.size();
+        int m=num2.size();
+
+        vector<int>result(n+m,0);
+
+        for(int i=n-1;i>=0;i--){
+            for(int j=m-1;j>=0;j--){
+
+                int digit1=num1[i]-'0';
+                int digit2=num2[j]-'0';
+
+                int product=digit1*digit2;
+
+                int pos1=i+j;
+                int pos2=i+j+1;
+
+                int sum=product+result[pos2];
+
+                result[pos2]=sum%10;
+                result[pos1]+=sum/10;
+            }
+        }
+
+        string ans="";
+
+        for(int digit:result){
+            if(ans.empty() && digit==0)
+               continue;
+            
+            ans+=digit+'0';
+        }
+
+        return ans;
+    }
+};
+
+
+
+// Input: num1 = "2", num2 = "3"
+// Output: "6"
+// Example 2:
+
+// Input: num1 = "123", num2 = "456"
+// Output: "56088"
+ 
