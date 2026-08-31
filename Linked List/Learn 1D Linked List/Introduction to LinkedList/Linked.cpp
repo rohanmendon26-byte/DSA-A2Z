@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <ostream>
 using namespace std;
 
 struct Node{
@@ -51,10 +52,47 @@ int search(Node *head,int val){
     return 0;
 }
 
+
+Node *removeshead(Node *head){
+    if(head==NULL)
+      return head;
+    Node *temp=head;
+    head=head->next;
+    delete temp;
+    return head;
+}
+
+Node *removetail(Node *head){
+    if(head==NULL || head->next==NULL)
+       return NULL;
+    Node *temp=head;
+    while(temp->next->next!=nullptr){
+        temp=temp->next;
+    }
+
+    delete temp->next;
+    temp->next=nullptr;
+
+    return head;
+}
+
+
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
 int main(){
     vector<int>arr={2,5,8,7};
-    Node *y=new Node(arr[1],nullptr);
+    // Node *y=new Node(arr[1],nullptr);
     Node *head=convertArr2LL(arr);
     // cout<<lengthofall(head);
-    cout<<search(head,2)<<endl;
+    // cout<<search(head,2)<<endl;
+    // head=removeshead(head);
+    head=removetail(head);
+    printList(head);
 }
